@@ -18,6 +18,12 @@ instances:
 - id: add386arch
   module: shellprocess
   config: shellprocess_add386arch.conf
+- id: boot_deploy
+  module: shellprocess
+  config: shellprocess@boot_deploy.conf
+- id: boot_reconfigure
+   module: shellprocess
+   config: shellprocess@boot_reconfigure.conf
 #- id: pkgselect_action
 #  module: contextualprocess
 #  config: pkgselect_context.conf
@@ -59,6 +65,8 @@ sequence:
   - hwclock
   #- contextualprocess@before_bootloader_mkdirs
   - shellprocess@bug-LP#1829805
+  - shellprocess@boot_deploy        # added
+  - shellprocess@boot_reconfigure   # added
   - initramfscfg
   - initramfs
   - grubcfg
